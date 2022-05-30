@@ -77,23 +77,34 @@
         depositBtn.addEventListener("click", function(){
            const depositNUmber = getInputNumber("depositAmount");
 
+
+           if(depositNUmber < 0){
+               alert("Negative Number cannot be accept");
+           }
+           else{
+            updateSpanText("currentDeposit", depositNUmber);
+            updateSpanText("currentBalance", depositNUmber);
+            document.getElementById("depositAmount").value = "";
+           }
             // const currentDeposit = document.getElementById("currentDeposit").innerText;
             // const currentDepositNumber = parseFloat(currentDeposit);
             // const totalDeposite = depositNUmber + currentDepositNumber;
             // document.getElementById("currentDeposit").innerText = totalDeposite;
-            updateSpanText("currentDeposit", depositNUmber);
+      
             // const currentBalance = document.getElementById("currentBalance").innerText;
             // const currentBalanceNumber = parseFloat(currentBalance);
             // const totalBalance = depositNUmber + currentBalanceNumber;
             // document.getElementById("currentBalance").innerText = totalBalance;
-            updateSpanText("currentBalance", depositNUmber);
+         
 
-            document.getElementById("depositAmount").value = "";
+         
 
             //withdraw button event handler
             const withdrawBtn = document.getElementById("addWithdraw");
             withdrawBtn.addEventListener("click", function(){
                 const withdrawNumber = getInputNumber("withdrawAmount");
+
+                
                
                 updateSpanText("currentWithdraw", withdrawNumber)
                 updateSpanText("currentBalance", -1 * withdrawNumber);
